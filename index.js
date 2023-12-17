@@ -13,10 +13,12 @@ const currentMonth = currentDateObj.getMonth();
 const currentDate = currentDateObj.getDate();
 console.log(currentDate, currentMonth, currentYear);
 
+// Get the total number of days in a specific month
 function getTotalDays(month, year) {
   return new Date(year, month, 0).getDate();
 }
 
+//Check the validity of each input, setting the error state and error message depends on each situation
 function checkDay(dayInput, monthInput, yearInput) {
   if (dayInput.trim() === "") {
     setErrorState(false, dayInputEle);
@@ -77,6 +79,7 @@ function checkYear(input) {
   }
 }
 
+// Setting the error state of each input depends on the validity
 function setErrorState(inputIsValid, inputEle) {
   inputWrapperEle = inputEle.parentElement;
   if (!inputIsValid) {
@@ -86,9 +89,26 @@ function setErrorState(inputIsValid, inputEle) {
   }
 }
 
+//Setting the error message for each input
 function setErrorMessage(inputEle, message) {
   const errorMessageEle = inputEle.nextElementSibling;
   errorMessageEle.textContent = message;
+}
+
+//Animate the change of numbers in result section
+function animateResult(ele, result) {
+  if (result === 0) {
+    ele.textContent = result;
+  } else {
+    let counter = 0;
+    const countdown = setInterval(() => {
+      counter++;
+      ele.textContent = counter;
+      if (counter === result) {
+        clearInterval(countdown);
+      }
+    }, 20);
+  }
 }
 
 // prevent special character [. , e]
@@ -153,25 +173,6 @@ function submitHandler(event) {
     animateResult(resultDaysEle, day);
     animateResult(resultMonthsEle, month);
     animateResult(resultYearsEle, year);
-
-    day = 0;
-    month = 0;
-    year = 0;
-  }
-}
-
-function animateResult(ele, result) {
-  if (result === 0) {
-    ele.textContent = result;
-  } else {
-    let counter = 0;
-    const countdown = setInterval(() => {
-      counter++;
-      ele.textContent = counter;
-      if (counter === result) {
-        clearInterval(countdown);
-      }
-    }, 20);
   }
 }
 

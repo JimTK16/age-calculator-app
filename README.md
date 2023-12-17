@@ -17,8 +17,6 @@ Users should be able to:
 - See hover and focus states for all interactive elements on the page
 - **Bonus**: See the age numbers animate to their final number when the form is submitted
 
-### Screenshot
-
 ### Links
 
 - Solution URL: https://github.com/JimTK16/age-calculator-app
@@ -33,3 +31,13 @@ Users should be able to:
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
+
+### What I learned
+
+I have more practising with the clamp() function to make my site more responsive.
+
+Also I learned how to remove the input spinner for inputs with type="number".
+
+### Continued development
+
+I want to improve my JS code. At the moment, I think it can be clearer and more concise. The logic I used can also be refined. In some parts, I might repeat my code more than I should.

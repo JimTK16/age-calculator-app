@@ -16,6 +16,16 @@ svg {
   max-width: 100%;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 :root {
   --purple: hsl(259, 100%, 65%);
   --light-red: hsl(0, 100%, 67%);
@@ -49,8 +59,8 @@ body {
 
 .main {
   width: 95%;
-  max-width: 68rem;
-  padding: 2.4rem 1rem;
+  max-width: 62rem;
+  padding: 3.2rem clamp(1.6rem, 0.473rem + 3.005vw, 4.8rem);
   margin: 0 auto;
   border-radius: 2rem 2rem 6rem 2rem;
   background-color: var(--white);
@@ -60,21 +70,16 @@ body {
   padding-block-end: 6rem;
   border-bottom: 1px solid var(--light-grey);
   position: relative;
-  margin-block-end: 8rem;
+  margin-block-end: 6rem;
 }
 
 .form {
   display: flex;
-  gap: 0.8rem;
+  gap: clamp(0.8rem, 0.377rem + 1.127vw, 2rem);
 }
 
-.input-wrapper:has(.label-day),
-.input-wrapper:has(.label-month) {
-  flex: 30%;
-}
-
-.input-wrapper:has(.label-year) {
-  flex: 40%;
+.input-wrapper {
+  flex: 1;
 }
 
 .input-wrapper-error .label {
@@ -92,14 +97,14 @@ body {
 .error-message {
   visibility: hidden;
   color: var(--light-red);
-  font-size: 1rem;
+  font-size: clamp(1rem, 0.93rem + 0.188vw, 1.2rem);
   font-weight: 500;
   font-style: italic;
 }
 
 .label {
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: clamp(1.2rem, 1.13rem + 0.188vw, 1.4rem);
   font-weight: 600;
   color: var(--smokey-grey);
   letter-spacing: 0.25rem;
@@ -107,8 +112,10 @@ body {
 
 .input {
   margin-block-start: 1rem;
+  margin-block-end: 0.25rem;
+
   width: 100%;
-  font-size: 2rem;
+  font-size: clamp(2rem, 1.859rem + 0.376vw, 2.4rem);
   font-weight: 600;
   padding: 1rem;
   border: 1px solid var(--light-grey);
@@ -140,6 +147,10 @@ body {
   padding: 1.6rem;
 }
 
+.btn-submit:hover {
+  background-color: var(--off-black);
+}
+
 .btn-submit svg {
   width: 2.3rem;
   height: auto;
@@ -151,50 +162,11 @@ body {
   font-size: 3.2rem;
 }
 
-/* .result-wrapper h2 {
-  
-} */
-
 .result {
   color: var(--purple);
 }
 
-@media screen and (min-width: 425px) {
-  .input-wrapper:has(.label-day),
-  .input-wrapper:has(.label-month),
-  .input-wrapper:has(.label-year) {
-    flex: 1;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .main {
-    padding: 3.2rem 4.8rem;
-  }
-
-  .form-wrapper {
-    padding-block-end: 6rem;
-    margin-block-end: 8rem;
-  }
-
-  .form {
-    gap: 2rem;
-  }
-
-  .label {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--smokey-grey);
-    letter-spacing: 0.25rem;
-  }
-
-  .input {
-    margin-block-start: 1rem;
-    width: 100%;
-    font-size: 2rem;
-    font-weight: 600;
-    padding: 1rem;
-    border: 1px solid var(--light-grey);
-    border-radius: 0.5rem;
-  }
+.result-wrapper h2 {
+  font-size: clamp(3.6rem, 2.332rem + 3.38vw, 7.2rem);
+  line-height: 1.1;
 }
