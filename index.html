@@ -9,6 +9,63 @@
     <title>Age calculator app</title>
   </head>
   <body>
-    Day DD Month MM Year YYYY -- years -- months -- days
+    <main class="main">
+      <div class="form-wrapper">
+        <form class="form">
+          <div class="input-wrapper">
+            <label for="input-day" class="label label-day">Day</label>
+            <input
+              type="number"
+              class="input"
+              id="input-day"
+              placeholder="DD"
+            />
+            <p class="error-message">error</p>
+          </div>
+          <div class="input-wrapper">
+            <label for="input-month" class="label label-month">Month</label>
+            <input
+              type="number"
+              class="input"
+              id="input-month"
+              placeholder="MM"
+            />
+            <p class="error-message"></p>
+          </div>
+          <div class="input-wrapper">
+            <label for="input-year" class="label label-year">Year</label>
+            <input
+              type="number"
+              class="input"
+              id="input-year"
+              placeholder="YY"
+            />
+            <p class="error-message"></p>
+          </div>
+          <button class="btn-submit" type="submit">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              xmlns="http://www.w3.org/2000/svg"
+              width="46"
+              height="44"
+              viewBox="0 0 46 44"
+            >
+              <g fill="none" stroke="#FFF" stroke-width="4">
+                <path
+                  d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44"
+                />
+              </g>
+            </svg>
+            <span class="sr-only">Submit</span>
+          </button>
+        </form>
+      </div>
+      <div class="result-wrapper">
+        <h2><span class="result result-years">- -</span> years</h2>
+        <h2><span class="result result-months">- -</span> months</h2>
+        <h2><span class="result result-days">- -</span> days</h2>
+      </div>
+    </main>
   </body>
 </html>
