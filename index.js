@@ -11,7 +11,6 @@ const currentDateObj = new Date();
 const currentYear = currentDateObj.getFullYear();
 const currentMonth = currentDateObj.getMonth();
 const currentDate = currentDateObj.getDate();
-console.log(currentDate, currentMonth, currentYear);
 
 // Get the total number of days in a specific month
 function getTotalDays(month, year) {
@@ -146,29 +145,31 @@ function submitHandler(event) {
     checkYear(yearInput);
 
   if (formIsValid) {
-    const miliSecInADay = 60 * 60 * 24 * 1000;
-    const miliSecInAYear = 365.25 * miliSecInADay;
-    const miliSecInAMonth = 30 * miliSecInADay;
     const dobObj = new Date(yearInput, monthInput - 1, dayInput);
 
-    let day, month, year;
-
-    const totalMiliSecDiff = currentDateObj.getTime() - dobObj.getTime();
-
-    if (totalMiliSecDiff < 0) {
+    if (currentDateObj < dobObj) {
       setErrorState(false, yearInputEle);
       setErrorMessage(yearInputEle, "Must be in the past");
       return;
     }
 
-    year = Math.floor(totalMiliSecDiff / miliSecInAYear);
-    month = Math.floor(
-      (totalMiliSecDiff - year * miliSecInAYear) / miliSecInAMonth
-    );
-    day = Math.floor(
-      (totalMiliSecDiff - year * miliSecInAYear - month * miliSecInAMonth) /
-        miliSecInADay
-    );
+    let year = currentDateObj.getFullYear() - dobObj.getFullYear();
+    let month = currentDateObj.getMonth() - dobObj.getMonth();
+    let day = currentDateObj.getDate() - dobObj.getDate();
+
+    if (day < 0) {
+      month--;
+      day += new Date(
+        currentDateObj.getFullYear(),
+        currentDateObj.getMonth(),
+        0
+      ).getDate();
+    }
+
+    if (month < 0) {
+      year--;
+      month += 12;
+    }
 
     animateResult(resultDaysEle, day);
     animateResult(resultMonthsEle, month);
